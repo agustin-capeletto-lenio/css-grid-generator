@@ -15,15 +15,54 @@
 
 <body>
 
+  <nav class="top-nav">
+    <div class="nav-wrapper">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/"> <img src="/img/ico128.png"> Layoutit!</a>
+      <ul class="navbar-nav mr-auto" id="menu-layoutit">
+        <li class="tools-btns">
+          <div data-toggle="buttons-radio">
+            <button class="btn-get-code" href=""><i class="fas fa-download"></i> Get the code!</button>
+            <button class="btn"><i class="fas fa-share"></i> Share</button>
+            <button class="btn btn-icon" href="#clear" id="clear"><i class="fas fa-trash-alt"></i></button>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="top-btns">
+        <div class="btn-group">       
+          <a class="top-link" href="/en/register">Register</a> |
+          <a class="top-link" href="/en/login">Login</a>
+        </div>
+          <button href="/hire/index" role="button" data-toggle="modal" data-target="#layoutitModal" class="button btn-hire-inner">Hire Us</button>
+          <button href="/feedbacks/indexV3" role="button" data-toggle="modal" data-target="#layoutitModal" id="feedback" class="button btn-feedback btn-primary">Feedback</button>
+        <div class="btn-group btn-donate">
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+          <input type="hidden" name="cmd" value="_s-xclick">
+          <button name="submit" alt="PayPal - The safer, easier way to pay online!" class="button btn-donate">Donate</button>
+          <img alt="Donate to LayoutIt!" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+          </form>
+        </div>
+      </div>
+    </div>
+  </nav>
+
   <div class="wrapper">
 
   <div class="code-modal"><div class="code-modal-backdrop"></div><div class="code-modal-content"> <div class="code-modal-close">x</div></div></div>
-  
-  <div class="button-container"> 
-    <h2>CSS Grid Generator</h2>
-    <button id="get-code">Get the code!</button>
-    <hr>
-    <div>Columns <span style="transform:rotate(90deg);display:inline-block;">&#9776;</span></div>
+
+  <div class="sidebar"> 
+    <div class="title-bg">
+      <h2>CSS Grid Generator</h2>
+      <button class="btn-get-code" id="get-code">Get the code!</button>
+    </div>  
+    <h3><span class="icon icon-cols">&#9776;</span> Columns</h3>
+    <button class="btn-add" id="add-column">Add</button>
+    <button class="btn-remove" id="remove-col">Remove</button>
     <div class="input-cols">
       <div class="input-container">
         <input type="text" value="1"> 
@@ -53,10 +92,10 @@
         </select>
       </div>  
     </div>
-      <button id="add-column">Add</button>
-      <button id="remove-col">Remove</button>
     <hr>
-    <div>Rows &#9776;</div>
+    <h3><span class="icon">&#9776;</span> Rows</h3>
+    <button class="btn-add" id="add-row">Add</button>  
+    <button class="btn-remove" id="remove-row">Remove</button>  
     <div class="input-rows">
       <div class="input-container">
         <input type="text" value="1"> 
@@ -87,14 +126,15 @@
         </select>
       </div>  
     </div>
-    <button id="add-row">Add</button>  
-    <button id="remove-row">Remove</button>  
     <hr>
-    <div id="add-area-container"><input type="text" id="area-name" placeholder="Area name..."><button id="add-area" disabled>Save area</button></div>
+    <h3>Areas</h3>
+    <p>Click on cells to define areas</p>
+    <input type="text" id="area-name" placeholder="Area name...">
+    <button id="add-area" disabled>Save area</button>
 
     <div class="input-gaps">
       <div class="input-row-gap">
-        Row Gap
+        <h3>Row Gap</h3>
         <div class="input-container">
           <input type="text" value="1"> 
           <select name="" id="">
@@ -105,8 +145,8 @@
         </div>
       </div>
       <div class="input-col-gap">
-        Column Gap
-        <div class="input-container ">
+        <h3>Column Gap</h3>
+        <div class="input-container">
           <input type="text" value="1"> 
           <select name="" id="">
             <option value="px" selected>px</option>
