@@ -1,0 +1,128 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>CSS Grid Generator</title>
+
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/jquery.min.js"></script>
+  <script src="js/lodash.js"></script>
+  <script src="js/scripts.js"></script>
+
+</head>
+
+<body>
+
+  <div class="wrapper">
+
+  <div class="code-modal"><div class="code-modal-backdrop"></div><div class="code-modal-content"> <div class="code-modal-close">x</div></div></div>
+  
+  <div class="button-container"> 
+    <h2>CSS Grid Generator</h2>
+    <button id="get-code">Get the code!</button>
+    <hr>
+    <div>Columns <span style="transform:rotate(90deg);display:inline-block;">&#9776;</span></div>
+    <div class="input-cols">
+      <div class="input-container">
+        <input type="text" value="1"> 
+        <select name="" id="">
+          <option value="fr">fr</option>
+          <option value="px">px</option>
+          <option value="%">%</option>        
+          <option value="em">em</option>        
+        </select>
+      </div>
+      <div class="input-container">
+        <input type="text" value="1"> 
+        <select name="" id="">
+          <option value="fr">fr</option>
+          <option value="px">px</option>
+          <option value="%">%</option>        
+          <option value="em">em</option>        
+        </select>
+      </div>
+      <div class="input-container">
+        <input type="text" value="1"> 
+        <select name="" id="">
+          <option value="fr">fr</option>
+          <option value="px">px</option>
+          <option value="%">%</option>        
+          <option value="em">em</option>        
+        </select>
+      </div>  
+    </div>
+      <button id="add-column">Add</button>
+      <button id="remove-col">Remove</button>
+    <hr>
+    <div>Rows &#9776;</div>
+    <div class="input-rows">
+      <div class="input-container">
+        <input type="text" value="1"> 
+        <select name="" id="">
+          <option value="fr">fr</option>
+          <option value="px">px</option>
+          <option value="%">%</option>        
+          <option value="em">em</option>        
+        </select>
+      </div>
+      <div class="input-container">
+        <input type="text" value="1"> 
+        <select name="" id="">
+          <option value="fr">fr</option>
+          <option value="px">px</option>
+          <option value="%">%</option>        
+          <option value="em">em</option>        
+            
+        </select>
+      </div>
+      <div class="input-container">
+        <input type="text" value="1"> 
+        <select name="" id="">
+          <option value="fr">fr</option>
+          <option value="px">px</option>
+          <option value="%">%</option>        
+          <option value="em">em</option>        
+        </select>
+      </div>  
+    </div>
+    <button id="add-row">Add</button>  
+    <button id="remove-row">Remove</button>  
+    <hr>
+    <div id="add-area-container"><input type="text" id="area-name" placeholder="Area name..."><button id="add-area" disabled>Save area</button></div>
+
+    <div class="input-gaps">
+      <div class="input-row-gap">
+        Row Gap
+        <div class="input-container">
+          <input type="text" value="1"> 
+          <select name="" id="">
+            <option value="px" selected>px</option>
+            <option value="%">%</option>        
+            <option value="em">em</option>        
+          </select>
+        </div>
+      </div>
+      <div class="input-col-gap">
+        Column Gap
+        <div class="input-container ">
+          <input type="text" value="1"> 
+          <select name="" id="">
+            <option value="px" selected>px</option>
+            <option value="%">%</option>        
+            <option value="em">em</option>        
+          </select>
+        </div>              
+      </div>
+    </div>
+  </div>
+  <div id="grid-container" style="">
+
+  </div>
+
+</div>
+
+
+</body>
+</html>
