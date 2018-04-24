@@ -1,5 +1,6 @@
 html {
   box-sizing: border-box;
+  font-size: 100%;
 }
 
 *, *:before, *:after {
@@ -18,7 +19,6 @@ body {
   color: white;
   display: flex;
   align-items: center;
-  font-family: 'Alegreya Sans', sans-serif;
   justify-content: space-between;
   min-height: 50px;
   padding: 5px;
@@ -51,17 +51,19 @@ body {
   border-radius: 50px;
   color: white;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 1rem;
+  font-weight: 700;
   height: 35px;
   margin-left: 5px;
   margin-right: 5px;
-  padding: 5px 10px 4px;
+  padding-left: 14px;
+  padding-right: 14px;
 }
 .top-nav button:hover {
   background-color: #236f86;
 }
 .top-nav button svg {
-  height: 16px;
+  height: 1rem;
   vertical-align: text-top;
 }
 .top-nav button.btn-trash {
@@ -149,12 +151,13 @@ body {
   overflow: auto;
   position: fixed;
   left: 0;
-  top: 0;
+  top: 50px;
   bottom: 0;
   padding: 10px 10px 50px;
   width: 190px;
   z-index: 9;
 }
+.sidebar h3:first-child { margin-top: 0; }
 .sidebar hr {
   border-color: #786882;
 }
@@ -190,6 +193,7 @@ body {
   color: white;
   cursor: pointer;
   font-size: 14px;
+  font-weight: 700;
   height: 30px;
   margin-bottom: 10px;
   padding: 6px;
