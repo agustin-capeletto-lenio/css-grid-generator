@@ -195,14 +195,16 @@ section button:hover,
   overflow: auto;
 }
 .sidebar .input-container input[type=number] {
+  flex: 1;
   font-size: .875em;
   text-align: center;
 }
 .sidebar .input-container select {
   border: 0;
+  flex: 1;
   font-size: .875em;
-  margin-left: 5%;
   height: 30px;
+  margin-left: 5%;
 }
 .sidebar p {
   font-size: .813rem;
