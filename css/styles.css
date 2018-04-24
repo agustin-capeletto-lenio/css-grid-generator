@@ -10,6 +10,7 @@ html {
 body {
   font-family: 'Alegreya Sans', 'Helvetica Neue', Arial, sans-serif;
   margin: 0;
+  overflow: hidden;
 }
 
 .top-nav {
@@ -96,7 +97,7 @@ body {
   color: #36ce9f;
 }
 .wrapper {
-  background-color: #908f90;
+  background-color: #300548;
   margin-top: 50px;
 }
 
@@ -335,7 +336,7 @@ body {
   cursor: pointer;
 }
 #grid-container section input:hover + span {
-  background: lightgreen;
+  background: #ddd;
 }
 #grid-container section input:checked + span {
   background: lightblue;
