@@ -145,13 +145,13 @@ $(document).ready(function() {
 
     
   if (thisColUniques.length > 1 && thisRowUniques.length == 1 ) {
-      $("#grid-container").append("<section class='saved-area adding' style='grid-row:"+areaRows+" / "+areaRows+";grid-column:"+minCol+" / "+maxCol+"'><div style='background-color:rgba(76, 175, 80, 0.15);'></div></section>");
+      $("#grid-container").append("<section class='saved-area adding' style='grid-row:"+areaRows+" / "+areaRows+";grid-column:"+minCol+" / "+maxCol+"'><div style='background:repeating-linear-gradient(45deg,rgba(76, 175, 80, 0.15),rgba(76, 175, 80, 0.15) 10px,transparent 10px,transparent 20px)'></div></section>");
   } else if (thisColUniques.length == 1 && thisRowUniques.length > 1 ) {
-    $("#grid-container").append("<section class='saved-area adding' style='grid-row:"+minRow+" /  "+maxRow+";grid-column:"+areaCols+" / "+areaCols+"'><div style='background-color:rgba(76, 175, 80, 0.15);'></div></section>");  
+    $("#grid-container").append("<section class='saved-area adding' style='grid-row:"+minRow+" /  "+maxRow+";grid-column:"+areaCols+" / "+areaCols+"'><div style='background:repeating-linear-gradient(45deg,rgba(76, 175, 80, 0.15),rgba(76, 175, 80, 0.15) 10px,transparent 10px,transparent 20px)'></div></section>");  
   } else if (thisColUniques.length == 1 && thisRowUniques.length == 1 ) {
-    $("#grid-container").append("<section class='saved-area adding' style='grid-row:"+areaRows+" / "+areaRows+";grid-column:"+areaCols+" / "+areaCols+"'><div style='background-color:rgba(76, 175, 80, 0.15);'></div></section>");  
+    $("#grid-container").append("<section class='saved-area adding' style='grid-row:"+areaRows+" / "+areaRows+";grid-column:"+areaCols+" / "+areaCols+"'><div style='background:repeating-linear-gradient(45deg,rgba(76, 175, 80, 0.15),rgba(76, 175, 80, 0.15) 10px,transparent 10px,transparent 20px)'></div></section>");  
   } else if (thisColUniques.length > 1 && thisRowUniques.length > 1 ) {
-    $("#grid-container").append("<section class='saved-area adding' style='grid-row:"+minRow+" /  "+maxRow+";grid-column:"+minCol+" / "+maxCol+"'><div style='background-color:rgba(76, 175, 80, 0.15);'></div></section>");    
+    $("#grid-container").append("<section class='saved-area adding' style='grid-row:"+minRow+" /  "+maxRow+";grid-column:"+minCol+" / "+maxCol+"'><div style='background:repeating-linear-gradient(45deg,rgba(76, 175, 80, 0.15),rgba(76, 175, 80, 0.15) 10px,transparent 10px,transparent 20px)'></div></section>");    
   }
 
       $(".saved-area.adding > div").append(addAreaContainer);
