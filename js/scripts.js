@@ -112,15 +112,19 @@ $(document).ready(function() {
   });
 
 
+  $(document).on('change','input#show-coords',function () {
+    $('section span').toggleClass("hidden-coords");
+  });
+
   $(document).on('change','section input[type=checkbox]',function () {
 
     var addAreaContainer = $("#add-area-container").detach(); 
 
-        
+
       if ($(this).is(':checked')) {
         $('.saved-area.adding').remove();
         $('#area-name').val();
- var selectedCol = [];
+    var selectedCol = [];
     var selectedRow = [];
     $('section input:checked').each(function(i){
         var thisCol = $(this).siblings("span").data("col");
@@ -157,9 +161,10 @@ $(document).ready(function() {
       $(".saved-area.adding > div").append(addAreaContainer);
       $(".saved-area.adding > div").append("<div id='remove-area'>x</div>");
 
-    $('#add-area-container').addClass('active');
+      $('#add-area-container').addClass('active');
 
       }
+                $('#area-name').focus();
 
   });
 
@@ -182,18 +187,19 @@ $(document).ready(function() {
 
 
 $('#area-name').bind("enterKey",function(e){
-   //do stuff here
+   console.log('hoa')
 });
 $('#area-name').keyup(function(e){
     if(e.keyCode == 13)
     {
         $(this).trigger("enterKey");
+
     }
 });
 
-  $(document).on('click','#add-area',function () { 
+  $(document).on('click enterKey','#add-area, #area-name',function () { 
 
-    $(this).prop("disabled", true);
+    //$(this).prop("disabled", true);
     var selectedCol = [];
     var selectedRow = [];
     var areaColors = ["rgba(48, 5, 72, 0.3)","rgba(5, 72, 60, 0.3)","rgba(21, 72, 5, 0.3)","rgba(72, 67, 5, 0.3)","rgba(72, 5, 5, 0.3)","rgba(9, 5, 72, 0.3)","rgba(76, 175, 80, 0.3)","rgba(175, 163, 76, 0.3)","rgba(0, 150, 136, 0.3)"];
