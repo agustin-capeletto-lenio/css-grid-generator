@@ -1,5 +1,7 @@
 $.fn.eachSlice=function(e,c){for(var l=$(this),n=0;n<l.length;n+=e)c.call(l.slice(n,n+e).get(),n/e);return l};
 
+
+
 function updateColInput() {
   var colValues = [];
   $(".input-cols .input-container").each(function(){
@@ -163,8 +165,19 @@ $(document).ready(function() {
 
   $(document).on('input','#area-name',function () { $("#add-area").prop("disabled", false); });
 
+
+$('#area-name').bind("enterKey",function(e){
+   //do stuff here
+});
+$('#area-name').keyup(function(e){
+    if(e.keyCode == 13)
+    {
+        $(this).trigger("enterKey");
+    }
+});
+
   $(document).on('click','#add-area',function () { 
-        
+
     $(this).prop("disabled", true);
     var selectedCol = [];
     var selectedRow = [];
@@ -192,7 +205,8 @@ $(document).ready(function() {
     var IEmaxRow = _.maxBy(thisRowUniques);
 
     var areaName = $('#area-name').val();
-    
+                var addAreaContainer = $("#add-area-container").detach(); 
+
   if (thisColUniques.length > 1 && thisRowUniques.length == 1 ) {
       $("#grid-container").append("<section data-name='"+areaName+"' class='saved-area' style='grid-row:"+areaRows+" / "+areaRows+";grid-column:"+minCol+" / "+maxCol+"'><div style='background-color:"+randomColor+"'></div></section>");
   } else if (thisColUniques.length == 1 && thisRowUniques.length > 1 ) {
@@ -204,8 +218,14 @@ $(document).ready(function() {
   }
 
     $("section input[type=checkbox]:checked").prop("checked", false);
+    $('.saved-area').removeClass('active');
+    $('.saved-area.adding').remove();
+      $(".sidebar").append(addAreaContainer);
+
     $('#area-name').val("");
     $('#add-area-container').removeClass('active');
+      
+
   });
 
   $('.code-modal-backdrop, .code-modal-close').on("click", function() { $('.code-modal').removeClass("active"); });
