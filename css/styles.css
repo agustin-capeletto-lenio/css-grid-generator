@@ -28,7 +28,6 @@ a { text-decoration: none; }
   right: 0;
   left: 0;
   z-index: 99;
-  display: none;
 }
 
 .navbar-brand {
