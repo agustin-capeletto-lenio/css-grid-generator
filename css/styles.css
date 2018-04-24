@@ -259,7 +259,7 @@ section button:hover,
 
 #grid-container section.saved-area > div { border: 4px solid rgba(78, 78, 78, 0.15); }
 
-#grid-container section div {
+#grid-container section > div {
   min-height: 100%;
   position: relative;
 }
@@ -326,3 +326,19 @@ section button:hover,
 
 #add-area-container.active { display: block; }
 
+#remove-area {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 22px;
+  line-height: 22px;
+  cursor: pointer;
+  text-align: center;
+  background: #666;
+  color: #fff;
+  border-radius: 50%;
+  font-weight: bold;
+  pointer-events: all;
+}
+
+#remove-area:hover { background: #000; }
