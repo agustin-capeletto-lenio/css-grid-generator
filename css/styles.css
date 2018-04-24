@@ -76,6 +76,7 @@ body {
 .top-nav button.btn-feedback { background-color: #6b16a1; }
 .top-nav button.btn-feedback:hover { background-color: #490c6f; }
 .top-nav .top-link {
+  font-weight: 700;
   margin-left: .313em;
   margin-right: .313em;
 }
@@ -194,14 +195,14 @@ section button:hover,
   overflow: auto;
 }
 .sidebar .input-container input[type=number] {
+  font-size: .875em;
   text-align: center;
-  width: 70%;
 }
 .sidebar .input-container select {
   border: 0;
+  font-size: .875em;
   margin-left: 5%;
   height: 30px;
-  width: 25%;
 }
 .sidebar p {
   font-size: .813rem;
