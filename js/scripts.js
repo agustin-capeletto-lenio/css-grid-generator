@@ -141,21 +141,25 @@ $(document).ready(function() {
     var areaCols = thisColUniques.join(" / ");   
     var areaRows = thisRowUniques.join(" / ");    
 
-    var maxCol = _.maxBy(thisColUniques);
     var minCol = _.minBy(thisColUniques);
-    var minRow = _.minBy(thisRowUniques);  
+    var minRow = _.minBy(thisRowUniques);
+
     if (thisRowUniques.length == 1 ) { var maxRow = _.maxBy(thisRowUniques); } else { var maxRow = _.maxBy(thisRowUniques) + 1 }
+    if (thisColUniques.length == 1 ) { var maxCol = _.maxBy(thisColUniques); } else { var maxCol = _.maxBy(thisColUniques) + 1 }
+
+    var IEmaxCol = _.maxBy(thisColUniques);
+    var IEmaxRow = _.maxBy(thisRowUniques);
 
     var areaName = $('#area-name').val();
     
   if (thisColUniques.length > 1 && thisRowUniques.length == 1 ) {
-      $("#grid-container").append("<section data-name='"+areaName+"' class='saved-area' style='grid-row:"+areaRows+" / "+areaRows+";grid-column:"+minCol+" / span "+maxCol+"'><div style='background-color:"+randomColor+"'></div></section>");
+      $("#grid-container").append("<section data-name='"+areaName+"' class='saved-area' style='grid-row:"+areaRows+" / "+areaRows+";grid-column:"+minCol+" / "+maxCol+"'><div style='background-color:"+randomColor+"'></div></section>");
   } else if (thisColUniques.length == 1 && thisRowUniques.length > 1 ) {
     $("#grid-container").append("<section data-name='"+areaName+"' class='saved-area' style='grid-row:"+minRow+" /  "+maxRow+";grid-column:"+areaCols+" / "+areaCols+"'><div style='background-color:"+randomColor+"'></div></section>");  
   } else if (thisColUniques.length == 1 && thisRowUniques.length == 1 ) {
     $("#grid-container").append("<section data-name='"+areaName+"' class='saved-area' style='grid-row:"+areaRows+" / "+areaRows+";grid-column:"+areaCols+" / "+areaCols+"'><div style='background-color:"+randomColor+"'></div></section>");  
   } else if (thisColUniques.length > 1 && thisRowUniques.length > 1 ) {
-    $("#grid-container").append("<section data-name='"+areaName+"' class='saved-area' style='grid-row:"+minRow+" /  "+maxRow+";grid-column:"+minCol+" / span "+maxCol+"'><div style='background-color:"+randomColor+"'></div></section>");    
+    $("#grid-container").append("<section data-name='"+areaName+"' class='saved-area' style='grid-row:"+minRow+" /  "+maxRow+";grid-column:"+minCol+" / "+maxCol+"'><div style='background-color:"+randomColor+"'></div></section>");    
   }
 
     $("section input[type=checkbox]:checked").prop("checked", false);
@@ -182,6 +186,12 @@ $(document).ready(function() {
       var currentCols = $(this).css('grid-column');   
       $('.code-modal-content').append('<div class="code-modal-code">[data-area="'+savedArea+'"] {<div>grid-row: '+currentRows+';</div><div>grid-column: '+currentCols+';</div>}</div>');     
     });
+
+
+    if ($('input#IEsupport').is(':checked')) {
+    $('.code-modal-content').append("<div>@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {</div><div class='code-modal-code'>.grid-container { <div>display: -ms-grid;</div><div>-ms-grid-columns: "+currentCols+";</div><div>-ms-grid-rows: "+currentRows+"; }</div></div><div>}</div>"); 
+
+    }    
 
   });
 
