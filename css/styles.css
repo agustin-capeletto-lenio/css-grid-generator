@@ -156,7 +156,7 @@ body {
   width: 12.5em;
   z-index: 9;
 }
-.sidebar h3:first-child { margin-top: 0; }
+.sidebar > h3:first-child { margin-top: 0; }
 .sidebar hr {
   border-color: #786882;
 }
