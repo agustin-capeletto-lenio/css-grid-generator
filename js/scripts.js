@@ -109,8 +109,49 @@ $(document).ready(function() {
   $(document).on('change','section input[type=checkbox]',function () {
 
     var addAreaContainer = $("#add-area-container").detach(); 
-    $(this).closest("div").append(addAreaContainer);
+
+        
+      if ($(this).is(':checked')) {
+        $('.saved-area.adding').remove();
+        $('#area-name').val();
+ var selectedCol = [];
+    var selectedRow = [];
+    $('section input:checked').each(function(i){
+        var thisCol = $(this).siblings("span").data("col");
+        var thisRow = $(this).siblings("span").data("row"); 
+        selectedCol.push(thisCol);
+        selectedRow.push(thisRow);    
+    });  
+    var thisColUniques = _.uniq(selectedCol);
+    var thisRowUniques = _.uniq(selectedRow);
+
+    var areaCols = thisColUniques.join(" / ");   
+    var areaRows = thisRowUniques.join(" / ");    
+
+    var minCol = _.minBy(thisColUniques);
+    var minRow = _.minBy(thisRowUniques);
+
+    if (thisRowUniques.length == 1 ) { var maxRow = _.maxBy(thisRowUniques); } else { var maxRow = _.maxBy(thisRowUniques) + 1 }
+    if (thisColUniques.length == 1 ) { var maxCol = _.maxBy(thisColUniques); } else { var maxCol = _.maxBy(thisColUniques) + 1 }
+
+    var IEmaxCol = _.maxBy(thisColUniques);
+    var IEmaxRow = _.maxBy(thisRowUniques);
+
+    
+  if (thisColUniques.length > 1 && thisRowUniques.length == 1 ) {
+      $("#grid-container").append("<section class='saved-area adding' style='grid-row:"+areaRows+" / "+areaRows+";grid-column:"+minCol+" / "+maxCol+"'><div style='background-color:rgba(76, 175, 80, 0.15);'></div></section>");
+  } else if (thisColUniques.length == 1 && thisRowUniques.length > 1 ) {
+    $("#grid-container").append("<section class='saved-area adding' style='grid-row:"+minRow+" /  "+maxRow+";grid-column:"+areaCols+" / "+areaCols+"'><div style='background-color:rgba(76, 175, 80, 0.15);'></div></section>");  
+  } else if (thisColUniques.length == 1 && thisRowUniques.length == 1 ) {
+    $("#grid-container").append("<section class='saved-area adding' style='grid-row:"+areaRows+" / "+areaRows+";grid-column:"+areaCols+" / "+areaCols+"'><div style='background-color:rgba(76, 175, 80, 0.15);'></div></section>");  
+  } else if (thisColUniques.length > 1 && thisRowUniques.length > 1 ) {
+    $("#grid-container").append("<section class='saved-area adding' style='grid-row:"+minRow+" /  "+maxRow+";grid-column:"+minCol+" / "+maxCol+"'><div style='background-color:rgba(76, 175, 80, 0.15);'></div></section>");    
+  }
+
+      $(".saved-area.adding > div").append(addAreaContainer);
     $('#add-area-container').addClass('active');
+
+      }
 
   });
 
