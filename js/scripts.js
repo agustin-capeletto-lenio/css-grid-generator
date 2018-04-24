@@ -51,8 +51,11 @@ function updateColGapInput() {
 }
 
 function updateGrid() { 
+
   $('#grid-container').html('');  
-  
+
+
+
   updateColInput();
   updateRowInput();
   updateRowGapInput();  
@@ -87,6 +90,7 @@ function updateGrid() {
   $.each( areaRowsArrTotal, function(i,val) { areaRowsArrTotalString += "\'" + val.join(" ") + "\'" + " "; });  
 
   document.getElementById('grid-container').style.gridTemplateAreas = areaRowsArrTotalString;   
+
 
 };
 
@@ -224,7 +228,7 @@ $('#area-name').keyup(function(e){
 
     $('#area-name').val("");
     $('#add-area-container').removeClass('active');
-      
+
 
   });
 
