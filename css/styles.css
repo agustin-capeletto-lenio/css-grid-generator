@@ -233,6 +233,11 @@ body {
   color: #888;
   outline: 1px dashed rgba(255,255,255,0.6);
 }
+
+#grid-container section:nth-child(odd) {
+  //background: #f8f8f8;
+}
+
 #grid-container section.saved-area {
   position: absolute;
   background: transparent;
