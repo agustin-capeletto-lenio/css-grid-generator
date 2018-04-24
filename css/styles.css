@@ -32,7 +32,7 @@ body {
 .top-nav a { color: white; text-decoration: none; }
 
 .brand {
-  margin: 0 60px 0 0;
+  margin: 0 55px 0 0;
   font-size: 24px;
   font-style: italic;
   font-weight: 700;
@@ -41,7 +41,7 @@ body {
 
 .brand img {
     display: inline-block;
-    margin: 5px 5px 0 5px;
+    margin: 5px 10px 0 5px;
     max-height: 22px;
     vertical-align: text-top;
 }
@@ -68,10 +68,10 @@ body {
   margin-right: auto;
 }
 .top-nav button.btn-get-code {
-  background-color: #36ce3b;
+  background-color: #2fc334;
 }
 .top-nav button.btn-get-code:hover {
-  background-color: #2cb531;
+  background-color: #25b32a;
 }
 .top-nav button.btn-hire {
   background-color: #E91E63;
