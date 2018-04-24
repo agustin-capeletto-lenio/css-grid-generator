@@ -96,12 +96,12 @@ $(document).ready(function() {
   updateGrid();
 
   $('#add-column').on("click", function() {
-    $(".input-cols").append("<div class='input-container'><input type='text' value='1'><select name='' id=''><option value='fr'>fr</option><option value='px'>px</option><option value='%'>%</option></select></div>");
+    $(".input-cols").append("<div class='input-container'><input type='number' min='0' step='0.25' value='1'><select name='' id=''><option value='fr'>fr</option><option value='px'>px</option><option value='%'>%</option></select></div>");
     updateGrid();
   });
 
   $('body').on('click', '#add-row', function() {
-    $(".input-rows").append("<div class='input-container'><input type='text' value='1'><select name='' id=''><option value='fr'>fr</option><option value='px'>px</option><option value='%'>%</option></select></div>");
+    $(".input-rows").append("<div class='input-container'><input type='number' min='0' step='0.25' value='1'><select name='' id=''><option value='fr'>fr</option><option value='px'>px</option><option value='%'>%</option></select></div>");
     updateGrid();
   });
 
