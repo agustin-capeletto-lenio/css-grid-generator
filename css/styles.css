@@ -314,17 +314,26 @@ section button:hover,
 
 #add-area-container {
   margin: 1em;
-  max-width: 12.5em;
+  max-width: 11em;
   position: absolute;
   top: 0;
   left: 0;
   z-index: 999;
   display: none;
 }
-#add-area-container input { margin:0; }
+#add-area-container input { 
+  margin:0; 
+  width: calc(100% - 55px);
+  float:left; 
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;  
+  border: 2px solid #3095b4;
+}
 #add-area-container button {
+  border-bottom-left-radius: 0;
   border-top-left-radius: 0;
-  border-top-right-radius: 0;
+  width: 55px;
+  float:left;
 }
 
 #add-area-container.active { display: block; }
