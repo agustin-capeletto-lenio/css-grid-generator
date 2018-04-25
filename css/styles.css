@@ -388,7 +388,7 @@ section button:hover,
   align-items: center;
   justify-content: center;}
 
-#remove-area {
+.remove-area {
   position: absolute;
   top: 5px;
   right: 5px;
@@ -404,7 +404,7 @@ section button:hover,
   z-index: 999999;
 }
 
-#remove-area:hover { background: #E91E63; }
+.remove-area:hover { background: #E91E63; }
 
 .sidebar button.remove-item {
   border-top-left-radius: 0;

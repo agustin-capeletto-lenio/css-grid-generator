@@ -175,7 +175,7 @@ var SavedItems = [$(".saved-area")];
   }
 
       $(".saved-area.adding > div").append(addAreaContainer);
-      $(".saved-area.adding > div").append("<div id='remove-area'>x</div>");
+      $(".saved-area.adding > div").append("<div class='remove-area'>x</div>");
 
       $('#add-area-container').addClass('active');
         $(".saved-area.adding > div").append("<div class='handle-resize'><svg x='0px' y='0px' viewBox='0 0 20 20' enable-background='new 0 0 20 20' xml:space='preserve'><path fill='#FFFFFF' d='M6.987,10.987l-2.931,3.031L2,11.589V18h6.387l-2.43-2.081l3.03-2.932L6.987,10.987z M11.613,2l2.43,2.081  l-3.03,2.932l2,2l2.931-3.031L18,8.411V2H11.613z'/></svg></div>");
@@ -208,7 +208,8 @@ var SavedItems = [$(".saved-area")];
   $(document).on('input','.input-cols input, .input-rows input, .input-gaps input',function () { updateGrid();    $("section span").removeClass("hidden-coords"); });
 
   $(document).on('input','#area-name',function () { $("#add-area").prop("disabled", false); });
-  $(document).on('click','#remove-area',function () { 
+
+  $(document).on('click','section.adding .remove-area',function () { 
     var addAreaContainer = $("#add-area-container").detach(); 
     $(this).parents("section").remove(); 
     $(".sidebar").append(addAreaContainer);
@@ -218,6 +219,11 @@ var SavedItems = [$(".saved-area")];
 
   });
 
+  $(document).on('click','section[data-name] .remove-area',function () { 
+    $(this).parents("section").remove(); 
+
+
+  });
 
 $('#area-name').bind("enterKey",function(e){
 
@@ -291,7 +297,7 @@ areaColors = jQuery.grep(areaColors, function(value) {
       $('.saved-area').removeClass('active');
       $('.saved-area.adding').remove();
         $(".sidebar").append(addAreaContainer);
-        $(".saved-area > div").append("<div id='remove-area'>x</div>");
+        $(".saved-area > div").append("<div class='remove-area'>x</div>");
       $('#area-name').val("");
       $('#add-area-container').removeClass('active');
 
