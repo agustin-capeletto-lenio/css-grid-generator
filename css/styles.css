@@ -102,18 +102,7 @@ section svg,
 #toggle-nav:hover {
   background-color: #490c6f;
 }
-.mobile-nav {
-  background: #1e022d;
-  border-bottom-left-radius: 4px;
-  box-shadow: 1px 1px 2px rgba(0,0,0,.4);
-  padding: 1em .5em;
-  position: absolute;
-  top: 48px;
-  right: 0;
-  z-index: 999;
-  display: none;
-}
-  
+
 .code-modal {
   position: fixed;
   display: none;
@@ -504,6 +493,17 @@ section button:hover,
 @media (max-width: 950px) {
   .mobile-hide { display: none; }
   #toggle-nav { display: block; }
+  .mobile-nav {
+    background: #1e022d;
+    border-bottom-left-radius: 4px;
+    box-shadow: 1px 1px 2px rgba(0,0,0,.4);
+    padding: 1em .5em;
+    position: absolute;
+    top: 48px;
+    right: 0;
+    z-index: 999;
+    display: none;
+  }
   .mobile-nav.active { display: block; }
   #sidebar-mobile { display: block; }
   .sidebar {
