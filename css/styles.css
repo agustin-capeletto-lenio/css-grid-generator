@@ -26,7 +26,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: var(--topnav-height);
+  height: var(--topnav-height);
   padding: .313em;
   position: fixed;
   top: 0;
@@ -60,7 +60,7 @@ body {
   cursor: pointer;
   font-size: 1rem;
   font-weight: 700;
-  min-height: 2.188em;
+  height: 2.188em;
   margin-left: .313em;
   margin-right: .313em;
   padding: 0.313em 0.875rem;
@@ -110,27 +110,41 @@ section svg,
   right: 0;
 }
 .code-modal .code-modal-close {
-  position: absolute;
-  z-index: 999;
-  top: .938em;
-  right: .938em;
+  color: black;
   cursor: pointer;
-  color: #888;
+  font-size: 1.5rem;
+  opacity: .5;
+  position: absolute;
+  top: .5em;
+  right: .5em;
+  z-index: 999;
+}
+.code-modal .code-modal-close:hover {
+  opacity: 1;
 }
 .code-modal .code-modal-content {
   background: #fff;
+  border-radius: 4px;
   max-width: 31.250em;
-  min-height: 18.750em;
   max-height: 40em;
   overflow: auto;
   position: relative;
-  z-index: 999;
   margin: 3em auto;
-  border-radius: 4px;
-  padding: 2.188em;
+  padding: 1.5em 2em;
+  z-index: 999;
 }
-.code-modal .code-modal-content .code-modal-code { padding-bottom: 1.25em; }
-.code-modal .code-modal-content .code-modal-code div { padding: 0 1.25em; }
+.code-modal .code-modal-content .code-modal-code { 
+  background: #333;
+  border-radius: 4px;
+  color: white;
+  font-size: 1.125em;
+  margin-top: 1.5em;
+  padding: 1.25em; 
+}
+.code-modal .code-modal-content .code-modal-code div { color: cyan; padding: 0 1.25em; }
+
+.cssname { color: greenyellow; }
+.cssvalue { color: violet; }
 
 .sidebar {
   background-color: #300548;
@@ -161,7 +175,7 @@ section input,
   font-size: .875rem;
   margin-bottom: .313em;
   padding: .313em;
-  height: 30px;
+  height: 1.875rem;
   width: 100%;
 }
 .sidebar .btns-wrap {
@@ -179,7 +193,7 @@ section button,
   cursor: pointer;
   font-size: .875rem;
   font-weight: 700;
-  min-height: 30px;
+  height: 1.875rem;
   margin-bottom: .625em;
   padding: .375em;
 }
@@ -203,14 +217,14 @@ section button:hover,
 }
 .sidebar .input-container input[type=number] {
   flex: 1;
-  font-size: .875em;
+  font-size: .875rem;
   text-align: center;
 }
 .sidebar .input-container select {
   border: 0;
   flex: 1;
-  font-size: .875em;
-  height: 30px;
+  font-size: .875rem;
+  height: 1.875rem;
   margin-left: 5%;
 }
 .sidebar p {
@@ -266,8 +280,6 @@ section button:hover,
   z-index: 9999;
 }
 
-
-
 #grid-container section.saved-area > div { border: 4px solid rgba(78, 78, 78, 0.15); }
 
 #grid-container section > div {
@@ -291,8 +303,8 @@ section button:hover,
   border-radius: 4px;
   border: 1px dashed #310548;
   color: #310548;
-  font-size: .813em;
-  padding: 0 .313em;
+  font-size: .813rem;
+  padding: 0 .313rem;
   position: absolute;
   z-index: 99;
   opacity: 1;
@@ -342,7 +354,7 @@ section button:hover,
 }
 #add-area-container input { 
   margin:0; 
-  width: calc(100% - 55px);
+  width: calc(100% - 3.438em);
   float:left; 
   border-bottom-left-radius: 4px;
   border-top-left-radius: 4px;  
@@ -351,7 +363,7 @@ section button:hover,
 #add-area-container button {
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
-  width: 55px;
+  width: 3.438em;
   float:left;
 }
 */
@@ -380,10 +392,12 @@ section button:hover,
 }
 #add-area-container input:focus { outline: 0; }
 #add-area-container button {
-  width: 55px;
-  top: 5px;
-  right: 38px;
+  height: 1.875rem;
+  margin-right: .5em;
   position: absolute;
+  top: 5px;
+  right: 35px;
+  width: 3.438em;
 }
 #add-area-container button:hover { background: #2fc334; }
 #add-area-container.active {   display: flex;
@@ -391,18 +405,18 @@ section button:hover,
   justify-content: center;}
 
 .remove-area {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  width: 30px;
-  line-height: 30px;
-  cursor: pointer;
-  text-align: center;
   background: #E91E63;
-  color: #fff;
   border-radius: 3px;
+  color: #fff;
+  cursor: pointer;
   font-weight: bold;
+  height: 1.875rem;
+  top: 5px;
   pointer-events: all;
+  position: absolute;
+  right: 5px;
+  text-align: center;
+  width: 1.875rem;
   z-index: 999999;
 }
 
@@ -413,7 +427,7 @@ section button:hover,
   //border-bottom-left-radius: 0;
   background: #E91E63;
   margin-left: 3%;
-  min-width: 30px;
+  width: 1.875rem;
 }
 
 .sidebar button.remove-item:hover {
@@ -422,22 +436,21 @@ section button:hover,
 
 .sidebar button.remove-item:hover:after {
   content: "";
+  background: repeating-linear-gradient( 45deg, rgba(233, 31, 99, 0.4), rgba(233, 31, 99, 0.4) 10px, transparent 10px, transparent 20px );
+  pointer-events: none;
   position: absolute;
   left: 0;
   top: 0;
   right: 18px;
   bottom: 8px;
-  pointer-events: none;
-  background: repeating-linear-gradient(   45deg,   rgba(233, 31, 99, 0.4),   rgba(233, 31, 99, 0.4) 10px,   transparent 10px,   transparent 20px );
 }
-
 .handle-resize {
   background: #3095b4;
   position: absolute;
   bottom: 5px;
   width: 28px;
   right: 5px;
-  height: 30px;
+  height: 1.875em;
   border-radius: 4px;
   display: flex;
   align-items: center;
@@ -445,3 +458,13 @@ section button:hover,
   z-index: 999;
   display: none;
 }
+
+@media (max-width: 950px) {
+  .sidebar {
+    transform: translate(calc(var(--sidebar-width) * -1));
+  }
+  #grid-container {
+    padding-left: 1em;
+  }
+}
+

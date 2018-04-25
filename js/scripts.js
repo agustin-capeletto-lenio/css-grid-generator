@@ -175,7 +175,7 @@ var SavedItems = [$(".saved-area")];
   }
 
       $(".saved-area.adding > div").append(addAreaContainer);
-      $(".saved-area.adding > div").append("<div class='remove-area'>x</div>");
+      $(".saved-area.adding > div").append("<button class='remove-area'>&#10006;</button>");
 
       $('#add-area-container').addClass('active');
         $(".saved-area.adding > div").append("<div class='handle-resize'><svg x='0px' y='0px' viewBox='0 0 20 20' enable-background='new 0 0 20 20' xml:space='preserve'><path fill='#FFFFFF' d='M6.987,10.987l-2.931,3.031L2,11.589V18h6.387l-2.43-2.081l3.03-2.932L6.987,10.987z M11.613,2l2.43,2.081  l-3.03,2.932l2,2l2.931-3.031L18,8.411V2H11.613z'/></svg></div>");
@@ -297,7 +297,7 @@ areaColors = jQuery.grep(areaColors, function(value) {
       $('.saved-area').removeClass('active');
       $('.saved-area.adding').remove();
         $(".sidebar").append(addAreaContainer);
-        $(".saved-area > div").append("<div class='remove-area'>x</div>");
+        $(".saved-area > div").append("<button class='remove-area'>&#10006;</button>");
       $('#area-name').val("");
       $('#add-area-container').removeClass('active');
 
@@ -322,7 +322,7 @@ areaColors = jQuery.grep(areaColors, function(value) {
     var currentAreas = document.getElementById('grid-container').style.gridTemplateAreas;   
     $('.code-modal').addClass("active");   
     $('.code-modal-code').remove();
-    $('.code-modal-content').append("<div class='code-modal-code'>.grid-container { <div>display: grid;</div><div>grid-template-columns: "+currentCols+";</div><div>grid-template-rows: "+currentRows+";</div><div>grid-template-areas: "+currentAreas+";</div><div>grid-gap: "+currentGap+";</div> } </div> "); 
+    $('.code-modal-content').append("<div class='code-modal-code'><span class='cssname'>.grid-container</span> { <div>display: grid;</div><div>grid-template-columns: <span class='cssvalue'> "+currentCols+" </span> ;</div><div>grid-template-rows: <span class='cssvalue'> "+currentRows+" </span> ;</div><div>grid-template-areas: <span class='cssvalue'> "+currentAreas+" </span>;</div><div>grid-gap: <span class='cssvalue'> "+currentGap+" </span> ;</div> } </div> "); 
     
     //if ($("section[data-name]").length) { $('.code-modal-content').append("<div class='code-modal-code'><span class='code-modal-comment'>// Use data-area attribute to position your elements in the areas.</span></div> "); }
 
@@ -330,12 +330,12 @@ areaColors = jQuery.grep(areaColors, function(value) {
       var savedArea = $(this).data("name");
       var currentRows = $(this).css('grid-row');   
       var currentCols = $(this).css('grid-column');   
-      $('.code-modal-content').append('<div class="code-modal-code">[data-area="'+savedArea+'"] {<div>grid-row: '+currentRows+';</div><div>grid-column: '+currentCols+';</div>}</div>');     
+      $('.code-modal-content').append('<div class="code-modal-code"><span class="cssname">[data-area="'+savedArea+'"]</span> {<div>grid-row: <span class="cssvalue"> '+currentRows+'</span>;</div><div>grid-column: <span class="cssvalue"> '+currentCols+' </span>;</div>}</div>');     
     });
 
 
     if ($('input#IEsupport').is(':checked')) {
-    $('.code-modal-content').append("<div>@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {</div><div class='code-modal-code'>.grid-container { <div>display: -ms-grid;</div><div>-ms-grid-columns: "+currentCols+";</div><div>-ms-grid-rows: "+currentRows+"; }</div></div><div>}</div>"); 
+    $('.code-modal-content').append("<div>@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {</div><div class='code-modal-code'><span class='cssname'>.grid-container</span> { <div>display: -ms-grid;</div><div>-ms-grid-columns: <span class='cssvalue'> "+currentCols+" </span> ;</div><div>-ms-grid-rows: <span class='cssvalue'> "+currentRows+" </span>; }</div></div><div>}</div>"); 
 
     }    
 
