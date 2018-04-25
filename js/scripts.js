@@ -51,6 +51,7 @@ function updateColGapInput() {
 }
 
 function updateGrid() { 
+var SavedItems = [$("[data-name]")];
 
   $('#grid-container').html('');  
 
@@ -91,6 +92,9 @@ function updateGrid() {
 
   document.getElementById('grid-container').style.gridTemplateAreas = areaRowsArrTotalString;   
 
+$("#grid-container").append(SavedItems);
+console.log(SavedItems);
+
 
 };
 
@@ -101,13 +105,16 @@ $(document).ready(function() {
 
   updateGrid();
 
+var areaColors = ["rgba(230, 25, 75, 0.3)","rgba(60, 180, 75, 0.3)","rgba(255, 225, 25, 0.3)","rgba(245, 130, 48, 0.3)","rgba(145, 30, 180, 0.3)","rgba(70, 240, 240, 0.3)","rgba(240, 50, 230, 0.3)","rgba(0, 128, 128, 0.3)","rgba(170, 255, 195, 0.3)"];
+
+
   $('#add-column').on("click", function() {
-    $(".input-cols").append("<div class='input-container'><input type='number' min='0' step='0.25' value='1'><select name='' id=''><option value='fr'>fr</option><option value='px'>px</option><option value='%'>%</option></select></div>");
+    $(".input-cols").append("<div class='input-container'><input type='number' min='0' step='0.25' value='1'><select name='' id=''><option value='fr'>fr</option><option value='px'>px</option><option value='%'>%</option></select><button class='remove-item'>x</button></div>");
     updateGrid();
   });
 
   $('body').on('click', '#add-row', function() {
-    $(".input-rows").append("<div class='input-container'><input type='number' min='0' step='0.25' value='1'><select name='' id=''><option value='fr'>fr</option><option value='px'>px</option><option value='%'>%</option></select></div>");
+    $(".input-rows").append("<div class='input-container'><input type='number' min='0' step='0.25' value='1'><select name='' id=''><option value='fr'>fr</option><option value='px'>px</option><option value='%'>%</option></select><button class='remove-item'>x</button></div>");
     updateGrid();
   });
 
@@ -117,8 +124,13 @@ $(document).ready(function() {
   });
 
   $(document).on('change','section input[type=checkbox]',function () {
+if (areaColors.length === 0) {
+areaColors = ["rgba(230, 25, 75, 0.3)","rgba(60, 180, 75, 0.3)","rgba(255, 225, 25, 0.3)","rgba(245, 130, 48, 0.3)","rgba(145, 30, 180, 0.3)","rgba(70, 240, 240, 0.3)","rgba(240, 50, 230, 0.3)","rgba(0, 128, 128, 0.3)","rgba(170, 255, 195, 0.3)"];
 
+}
     var addAreaContainer = $("#add-area-container").detach(); 
+
+var SavedItems = [$(".saved-area")];
 
 
       if ($(this).is(':checked')) {
@@ -168,11 +180,20 @@ $(document).ready(function() {
 
   });
 
+
+
   $('#remove-row').on("click", function() { removeRows(); });
   $('#remove-col').on("click", function() { removeCols(); });
 
-  $(document).on('change','.input-cols select, .input-rows select, .input-gaps select',function () { updateGrid(); });
-  $(document).on('input','.input-cols input, .input-rows input, .input-gaps input',function () { updateGrid(); });
+  $(document).on('click','.remove-item',function () { 
+      $(this).closest('.input-container').remove();
+      updateGrid();
+
+   });
+
+
+  $(document).on('change','.input-cols select, .input-rows select, .input-gaps select',function () { updateGrid();     $("section span").removeClass("hidden-coords"); });
+  $(document).on('input','.input-cols input, .input-rows input, .input-gaps input',function () { updateGrid();    $("section span").removeClass("hidden-coords"); });
 
   $(document).on('input','#area-name',function () { $("#add-area").prop("disabled", false); });
   $(document).on('click','#remove-area',function () { 
@@ -187,7 +208,7 @@ $(document).ready(function() {
 
 
 $('#area-name').bind("enterKey",function(e){
-   console.log('hoa')
+
 });
 $('#area-name').keyup(function(e){
     if(e.keyCode == 13)
@@ -197,60 +218,83 @@ $('#area-name').keyup(function(e){
     }
 });
 
+
+
   $(document).on('click enterKey','#add-area, #area-name',function () { 
+    
+    if($('#area-name').val()) {
 
-    //$(this).prop("disabled", true);
-    var selectedCol = [];
-    var selectedRow = [];
-    var areaColors = ["rgba(48, 5, 72, 0.3)","rgba(5, 72, 60, 0.3)","rgba(21, 72, 5, 0.3)","rgba(72, 67, 5, 0.3)","rgba(72, 5, 5, 0.3)","rgba(9, 5, 72, 0.3)","rgba(76, 175, 80, 0.3)","rgba(175, 163, 76, 0.3)","rgba(0, 150, 136, 0.3)"];
-    var randomColor = areaColors[Math.floor(Math.random() * areaColors.length)];
-    $('section input:checked').each(function(i){
-        var thisCol = $(this).siblings("span").data("col");
-        var thisRow = $(this).siblings("span").data("row"); 
-        selectedCol.push(thisCol);
-        selectedRow.push(thisRow);    
-    });  
-    var thisColUniques = _.uniq(selectedCol);
-    var thisRowUniques = _.uniq(selectedRow);
-
-    var areaCols = thisColUniques.join(" / ");   
-    var areaRows = thisRowUniques.join(" / ");    
-
-    var minCol = _.minBy(thisColUniques);
-    var minRow = _.minBy(thisRowUniques);
-
-    if (thisRowUniques.length == 1 ) { var maxRow = _.maxBy(thisRowUniques); } else { var maxRow = _.maxBy(thisRowUniques) + 1 }
-    if (thisColUniques.length == 1 ) { var maxCol = _.maxBy(thisColUniques); } else { var maxCol = _.maxBy(thisColUniques) + 1 }
-
-    var IEmaxCol = _.maxBy(thisColUniques);
-    var IEmaxRow = _.maxBy(thisRowUniques);
-
-    var areaName = $('#area-name').val();
-                var addAreaContainer = $("#add-area-container").detach(); 
-
-  if (thisColUniques.length > 1 && thisRowUniques.length == 1 ) {
-      $("#grid-container").append("<section data-name='"+areaName+"' class='saved-area' style='grid-row:"+areaRows+" / "+areaRows+";grid-column:"+minCol+" / "+maxCol+"'><div style='background-color:"+randomColor+"'></div></div></section>");
-  } else if (thisColUniques.length == 1 && thisRowUniques.length > 1 ) {
-    $("#grid-container").append("<section data-name='"+areaName+"' class='saved-area' style='grid-row:"+minRow+" /  "+maxRow+";grid-column:"+areaCols+" / "+areaCols+"'><div style='background-color:"+randomColor+"'></div></div></section>");  
-  } else if (thisColUniques.length == 1 && thisRowUniques.length == 1 ) {
-    $("#grid-container").append("<section data-name='"+areaName+"' class='saved-area' style='grid-row:"+areaRows+" / "+areaRows+";grid-column:"+areaCols+" / "+areaCols+"'><div style='background-color:"+randomColor+"'></div></div></section>");  
-  } else if (thisColUniques.length > 1 && thisRowUniques.length > 1 ) {
-    $("#grid-container").append("<section data-name='"+areaName+"' class='saved-area' style='grid-row:"+minRow+" /  "+maxRow+";grid-column:"+minCol+" / "+maxCol+"'><div style='background-color:"+randomColor+"'></div></div></section>");    
-  }
-
-    $("section input[type=checkbox]:checked").prop("checked", false);
-    $('.saved-area').removeClass('active');
-    $('.saved-area.adding').remove();
-      $(".sidebar").append(addAreaContainer);
-      $(".saved-area > div").append("<div id='remove-area'>x</div>");
-    $('#area-name').val("");
-    $('#add-area-container').removeClass('active');
+      //$(this).prop("disabled", true);
+      var selectedCol = [];
+      var selectedRow = [];
 
 
+      var randomColor = areaColors[Math.floor(Math.random() * areaColors.length)];
+      console.log(randomColor);
+
+
+
+areaColors = jQuery.grep(areaColors, function(value) {
+  return value != randomColor;
+});
+      console.log(areaColors);
+
+      $('section input:checked').each(function(i){
+          var thisCol = $(this).siblings("span").data("col");
+          var thisRow = $(this).siblings("span").data("row"); 
+          selectedCol.push(thisCol);
+          selectedRow.push(thisRow);    
+      });  
+      var thisColUniques = _.uniq(selectedCol);
+      var thisRowUniques = _.uniq(selectedRow);
+
+      var areaCols = thisColUniques.join(" / ");   
+      var areaRows = thisRowUniques.join(" / ");    
+
+      var minCol = _.minBy(thisColUniques);
+      var minRow = _.minBy(thisRowUniques);
+
+      if (thisRowUniques.length == 1 ) { var maxRow = _.maxBy(thisRowUniques); } else { var maxRow = _.maxBy(thisRowUniques) + 1 }
+      if (thisColUniques.length == 1 ) { var maxCol = _.maxBy(thisColUniques); } else { var maxCol = _.maxBy(thisColUniques) + 1 }
+
+      var IEmaxCol = _.maxBy(thisColUniques);
+      var IEmaxRow = _.maxBy(thisRowUniques);
+
+      var areaName = $('#area-name').val();
+      var addAreaContainer = $("#add-area-container").detach(); 
+
+    if (thisColUniques.length > 1 && thisRowUniques.length == 1 ) {
+        $("#grid-container").append("<section data-name='"+areaName+"' class='saved-area active' style='grid-row:"+areaRows+" / "+areaRows+";grid-column:"+minCol+" / "+maxCol+"'><div></div></section>");
+    } else if (thisColUniques.length == 1 && thisRowUniques.length > 1 ) {
+      $("#grid-container").append("<section data-name='"+areaName+"' class='saved-area active' style='grid-row:"+minRow+" /  "+maxRow+";grid-column:"+areaCols+" / "+areaCols+"'><div></div></section>");  
+    } else if (thisColUniques.length == 1 && thisRowUniques.length == 1 ) {
+      $("#grid-container").append("<section data-name='"+areaName+"' class='saved-area active' style='grid-row:"+areaRows+" / "+areaRows+";grid-column:"+areaCols+" / "+areaCols+"'><div></div></section>");  
+    } else if (thisColUniques.length > 1 && thisRowUniques.length > 1 ) {
+      $("#grid-container").append("<section data-name='"+areaName+"' class='saved-area active' style='grid-row:"+minRow+" /  "+maxRow+";grid-column:"+minCol+" / "+maxCol+"'><div></div></section>");    
+    }
+
+      $(".saved-area.active").css("background", randomColor);
+
+      $("section input[type=checkbox]:checked").prop("checked", false);
+      $('.saved-area').removeClass('active');
+      $('.saved-area.adding').remove();
+        $(".sidebar").append(addAreaContainer);
+        $(".saved-area > div").append("<div id='remove-area'>x</div>");
+      $('#area-name').val("");
+      $('#add-area-container').removeClass('active');
+
+    }
   });
 
   $('.code-modal-backdrop, .code-modal-close').on("click", function() { $('.code-modal').removeClass("active"); });
   
+  $(document).on('mouseenter','section',function () { 
+    $("section span").addClass("hidden-coords");
+});
+
+  $(document).on('mouseleave','section',function () { 
+    $("section span").removeClass("hidden-coords");
+});
 
   $('#get-code').on("click", function() {
     var currentGap = document.getElementById('grid-container').style.gap;       
