@@ -101,11 +101,15 @@ console.log(SavedItems);
 function removeRows() { $('.input-rows').children().last().remove(); updateGrid(); }
 function removeCols() { $('.input-cols').children().last().remove(); updateGrid(); }
 
+
 $(document).ready(function() {
 
   updateGrid();
 
-var areaColors = ["rgba(230, 25, 75, 0.3)","rgba(60, 180, 75, 0.3)","rgba(255, 225, 25, 0.3)","rgba(245, 130, 48, 0.3)","rgba(145, 30, 180, 0.3)","rgba(70, 240, 240, 0.3)","rgba(240, 50, 230, 0.3)","rgba(0, 128, 128, 0.3)","rgba(170, 255, 195, 0.3)"];
+var areaColors = ["rgba(230, 25, 75, 0.3)","rgba(60, 180, 75, 0.3)","rgba(255, 225, 25, 0.3)","rgba(245, 130, 48, 0.3)","rgba(70, 240, 240, 0.3)","rgba(240, 50, 230, 0.3)","rgba(0, 128, 128, 0.3)","rgba(170, 255, 195, 0.3)"];
+
+
+
 
 
   $('#add-column').on("click", function() {
@@ -125,7 +129,7 @@ var areaColors = ["rgba(230, 25, 75, 0.3)","rgba(60, 180, 75, 0.3)","rgba(255, 2
 
   $(document).on('change','section input[type=checkbox]',function () {
 if (areaColors.length === 0) {
-areaColors = ["rgba(230, 25, 75, 0.3)","rgba(60, 180, 75, 0.3)","rgba(255, 225, 25, 0.3)","rgba(245, 130, 48, 0.3)","rgba(145, 30, 180, 0.3)","rgba(70, 240, 240, 0.3)","rgba(240, 50, 230, 0.3)","rgba(0, 128, 128, 0.3)","rgba(170, 255, 195, 0.3)"];
+areaColors = ["rgba(230, 25, 75, 0.3)","rgba(60, 180, 75, 0.3)","rgba(255, 225, 25, 0.3)","rgba(245, 130, 48, 0.3)","rgba(70, 240, 240, 0.3)","rgba(240, 50, 230, 0.3)","rgba(0, 128, 128, 0.3)","rgba(170, 255, 195, 0.3)"];
 
 }
     var addAreaContainer = $("#add-area-container").detach(); 
@@ -174,6 +178,7 @@ var SavedItems = [$(".saved-area")];
       $(".saved-area.adding > div").append("<div id='remove-area'>x</div>");
 
       $('#add-area-container').addClass('active');
+        $(".saved-area.adding > div").append("<div class='handle-resize'><svg x='0px' y='0px' viewBox='0 0 20 20' enable-background='new 0 0 20 20' xml:space='preserve'><path fill='#FFFFFF' d='M6.987,10.987l-2.931,3.031L2,11.589V18h6.387l-2.43-2.081l3.03-2.932L6.987,10.987z M11.613,2l2.43,2.081  l-3.03,2.932l2,2l2.931-3.031L18,8.411V2H11.613z'/></svg></div>");
 
       }
                 $('#area-name').focus();
@@ -184,6 +189,13 @@ var SavedItems = [$(".saved-area")];
 
   $('#remove-row').on("click", function() { removeRows(); });
   $('#remove-col').on("click", function() { removeCols(); });
+
+  $(document).on('mousedown','.handle-resize',function () { 
+      $('section').addClass('dragging');
+   });
+  $(document).on('mouseup','.handle-resize',function () { 
+      $('section').removeClass('dragging');
+   });
 
   $(document).on('click','.remove-item',function () { 
       $(this).closest('.input-container').remove();
@@ -283,18 +295,19 @@ areaColors = jQuery.grep(areaColors, function(value) {
       $('#area-name').val("");
       $('#add-area-container').removeClass('active');
 
+
+
     }
   });
 
   $('.code-modal-backdrop, .code-modal-close').on("click", function() { $('.code-modal').removeClass("active"); });
   
-  $(document).on('mouseenter','section',function () { 
-    $("section span").addClass("hidden-coords");
+  $(document).on('click','section.adding',function () { 
+                $('#area-name').focus();
+
 });
 
-  $(document).on('mouseleave','section',function () { 
-    $("section span").removeClass("hidden-coords");
-});
+
 
   $('#get-code').on("click", function() {
     var currentGap = document.getElementById('grid-container').style.gap;       
