@@ -1,5 +1,6 @@
 :root {
-  --sidebar-width: 16.5em;
+  --topnav-height: 3em;
+  --sidebar-width: 11.875em;
 }
 
 html {
@@ -25,7 +26,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 3em;
+  min-height: var(--topnav-height);
   padding: .313em;
   position: fixed;
   top: 0;
@@ -41,7 +42,7 @@ body {
   font-style: italic;
   font-weight: 700;
   letter-spacing: .02em;
-  margin: 0 1.5em 0 0;
+  margin: 0 1.25em 0 0;
 }
 
 .brand img {
@@ -83,7 +84,7 @@ body {
 .top-nav .top-link:hover { color: #36ce9f; }
 .wrapper {
   background-color: #877a8e;
-  margin-top: 3em;
+  margin-top: var(--topnav-height);
 }
 
 .code-modal {
@@ -131,7 +132,7 @@ body {
   overflow: auto;
   position: fixed;
   left: 0;
-  top: 3em;
+  top: var(--topnav-height);
   bottom: 0;
   padding: .625em .625em 3.125em;
   width: var(--sidebar-width);
