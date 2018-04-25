@@ -121,9 +121,11 @@ section svg,
   background: #fff;
   max-width: 31.250em;
   min-height: 18.750em;
+  max-height: 40em;
+  overflow: auto;
   position: relative;
   z-index: 999;
-  margin: 2.500em auto;
+  margin: 3em auto;
   border-radius: 4px;
   padding: 2.188em;
 }
