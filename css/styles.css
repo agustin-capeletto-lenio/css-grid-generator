@@ -65,13 +65,13 @@ body {
   margin-right: .313em;
   padding: 0.313em 0.875rem;
 }
-.top-nav a.btn-trash:hover
+.top-nav a.btn-trash:hover,
 .top-nav button:hover { background-color: #236f86; }
 section svg,
 .top-nav a.btn-trash svg,
 .top-nav button svg {
   height: 1rem;
-  vertical-align: text-top;
+  vertical-align: text-bottom;
 }
 .top-nav a.btn-trash { margin-right: auto; }
 .top-nav button.btn-get-code { background-color: #2fc334; }
@@ -392,11 +392,11 @@ section button:hover,
   position: absolute;
   top: 5px;
   right: 5px;
-  width: 28px;
+  width: 30px;
   line-height: 30px;
   cursor: pointer;
   text-align: center;
-  background: #3095b4;
+  background: #E91E63;
   color: #fff;
   border-radius: 3px;
   font-weight: bold;
@@ -404,12 +404,14 @@ section button:hover,
   z-index: 999999;
 }
 
-.remove-area:hover { background: #E91E63; }
+.remove-area:hover { background: #c11651; }
 
 .sidebar button.remove-item {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
+  //border-top-left-radius: 0;
+  //border-bottom-left-radius: 0;
   background: #E91E63;
+  margin-left: 3%;
+  min-width: 30px;
 }
 
 .sidebar button.remove-item:hover {
@@ -417,7 +419,7 @@ section button:hover,
 }
 
 .sidebar button.remove-item:hover:after {
-content: "";
+  content: "";
   position: absolute;
   left: 0;
   top: 0;
