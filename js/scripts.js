@@ -104,6 +104,14 @@ function removeCols() { $('.input-cols').children().last().remove(); updateGrid(
 
 $(document).ready(function() {
 
+  $('#sidebar-mobile').on('click', function() {
+    $('.sidebar').toggleClass('active');
+  });
+
+  $('#toggle-nav').on('click', function() {
+    $('.mobile-nav').toggleClass('active');
+  })
+
   updateGrid();
 
 var areaColors = ["rgba(230, 25, 75, 0.3)","rgba(60, 180, 75, 0.3)","rgba(255, 225, 25, 0.3)","rgba(245, 130, 48, 0.3)","rgba(70, 240, 240, 0.3)","rgba(240, 50, 230, 0.3)","rgba(0, 128, 128, 0.3)","rgba(170, 255, 195, 0.3)"];
