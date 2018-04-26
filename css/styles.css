@@ -32,7 +32,7 @@ body {
   top: 0;
   right: 0;
   left: 0;
-  z-index: 999;
+  z-index: 9999;
 }
 
 .top-nav a { color: white; text-decoration: none; }
@@ -185,7 +185,7 @@ section svg,
   top: var(--topnav-height);
   bottom: 0;
   padding: .625em .625em 0;
-  transition: 0.15s ease-in;
+  transition: 0.2s ease-in;
   width: var(--sidebar-width);
   z-index: 9;
 }
@@ -504,7 +504,6 @@ section button:hover,
     z-index: 999;
     display: none;
   }
-  .mobile-nav.active { display: block; }
   #sidebar-mobile { display: block; }
   .sidebar {
     position: absolute;

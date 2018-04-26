@@ -109,7 +109,7 @@ $(document).ready(function() {
   });
 
   $('#toggle-nav').on('click', function() {
-    $('.mobile-nav').toggleClass('active');
+    $('.mobile-nav').slideToggle(200);
   })
 
   updateGrid();
